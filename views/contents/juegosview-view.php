@@ -76,6 +76,7 @@
 	<!-- Cargamos el script que genera el juego -->
 	<script>
 	window.palabrasJuego = <?php echo json_encode(array_map('strtoupper', $palabras)); ?>;
+	// alert (window.palabrasJuego)
 	</script>
 	<script src="<?php echo SERVERURL; ?>views/js/sopa.js"></script>
 <?php endif; ?>
