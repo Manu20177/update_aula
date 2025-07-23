@@ -59,7 +59,7 @@
         public function obtenerPalabrasPorJuegoPista($juego_id){
             $juego_id = self::clean_string($juego_id);
 
-            $query = self::execute_single_query("SELECT palabra, pista FROM palabras WHERE juego_id = '$juego_id'");
+            $query = self::execute_single_query("SELECT palabra, pista FROM palabras WHERE juego_id = '$juego_id' ORDER BY `palabras`.`palabra` ASC");
 
             if($query && $query->rowCount() > 0){
                 return $query->fetchAll(PDO::FETCH_ASSOC); // fetch con arreglo asociativo para obtener ambas columnas

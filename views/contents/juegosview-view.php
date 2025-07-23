@@ -97,9 +97,10 @@
 	<h4>Pistas del crucigrama:</h4>
 	<ol id="lista-pistas" style="padding-left: 20px;">
 		<?php foreach ($palabrasc as $p): ?>
-			<li><?php echo $p['pista']; ?></li>
+			<li><strong><?php echo $p['numero']; ?>.</strong> <?php echo $p['pista']; ?></li>
 		<?php endforeach; ?>
 	</ol>
+
 </div>
 
 <div id="crucigrama-container" style="margin-top: 30px;"></div>
