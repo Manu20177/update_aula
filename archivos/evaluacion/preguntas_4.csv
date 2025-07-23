@@ -1,0 +1,11 @@
+﻿Pregunta,Tipo,Opción1,Opción2,Opción3,Respuesta
+¿Cuál es el objetivo principal del COSEDE?,multiple,Proteger a los bancos,Proteger los depósitos de los socios,Fiscalizar a las cooperativas,Proteger los depósitos de los socios
+El COSEDE cubre los depósitos hasta un monto máximo por persona.,verdadero_falso,VERDADERO,FALSO,,VERDADERO
+El Seguro de Depósitos aplica solo a bancos privados.,verdadero_falso,VERDADERO,FALSO,,FALSO
+La cobertura del Seguro de Depósitos es de hasta:,multiple,USD 10.000,USD 32.000,USD 50.000,USD 32.000
+El fondo del COSEDE se financia con:,multiple,Impuestos del Estado,Aportes de las entidades financieras,Préstamos internacionales,Aportes de las entidades financieras
+El Seguro de Depósitos aplica automáticamente sin necesidad de inscripción previa del depositante.,verdadero_falso,VERDADERO,FALSO,,VERDADERO
+Cuando una entidad entra en liquidación  el COSEDE...,completar,...devuelve los ahorros a los socios hasta el límite asegurado.,...vende los activos de la entidad.,...inicia una auditoría completa.,...devuelve los ahorros a los socios hasta el límite asegurado.
+¿Qué institución administra el Fondo del Seguro de Depósitos en Ecuador?,multiple,Banco Central del Ecuador,COSEDE,SEPS,COSEDE
+El Seguro de Depósitos cubre cuentas corrientes  de ahorro y depósitos a plazo.,verdadero_falso,VERDADERO,FALSO,,VERDADERO
+Si un socio tiene cuentas en varias entidades  la cobertura del COSEDE...,completar,...se aplica de manera independiente por cada entidad.,...se acumula en una sola cobertura.,...solo aplica en bancos.,...se aplica de manera independiente por cada entidad.

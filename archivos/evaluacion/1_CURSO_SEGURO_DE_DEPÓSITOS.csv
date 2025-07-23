@@ -1,0 +1,11 @@
+﻿Pregunta,Tipo,Opción1,Opción2,Opción3,Respuesta
+¿Qué organismo supervisa el seguro de depósitos en la República Dominicana?,multiple,BANRESERVAS,COSEDE,PROCONSUMIDOR,COSEDE
+El seguro de depósitos cubre cuentas en moneda extranjera.,verdadero_falso,Verdadero,Falso,,Verdadero
+¿Cuál es el límite máximo garantizado por el seguro de depósitos por persona y por institución financiera?,multiple,RD$ 1,000,000,RD$ 2,500,000,RD$ 5,000,000,RD$ 2,500,000
+El seguro de depósitos protege a los inversionistas contra pérdidas por fluctuaciones del mercado.,verdadero_falso,Verdadero,Falso,,Falso
+Los depósitos ______ son cubiertos automáticamente por el seguro de la COSEDE.,completar,a plazo fijo,en efectivo,electrónicos,a plazo fijo
+¿Qué tipo de cuenta NO está cubierta por el seguro de depósitos según la normativa actual?,multiple,Cuentas de ahorros,Certificados bancarios,Cuentas de inversión,Cuentas de inversión
+La COSEDE fue creada mediante la Ley No. 67-__.,completar,04,05,06,06
+El seguro de depósitos aplica únicamente a personas físicas.,verdadero_falso,Verdadero,Falso,,Falso
+¿Cuál de estos documentos se requiere para solicitar una indemnización ante la COSEDE?,multiple,Copia de la cédula,Contrato de arrendamiento,Recibo de luz,Copia de la cédula
+El seguro de depósitos entra en acción cuando una institución financiera está solvente.,verdadero_falso,Verdadero,Falso,,Falso

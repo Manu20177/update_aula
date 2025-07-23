@@ -1,0 +1,11 @@
+﻿Pregunta,Tipo,Opción1,Opción2,Opción3,Respuesta
+La infraestructura tecnológica solo incluye computadoras y servidores.,verdadero_falso,,,,FALSO
+Las organizaciones deben contar con respaldos actualizados y verificados de su información crítica.,verdadero_falso,,,,VERDADERO
+Un firewall ayuda a proteger la red interna de accesos no autorizados.,verdadero_falso,,,,VERDADERO
+No es necesario tener políticas de seguridad si se cuenta con buen software antivirus.,verdadero_falso,,,,FALSO
+El inventario tecnológico debe actualizarse únicamente cuando se realiza una auditoría.,verdadero_falso,,,,FALSO
+¿Cuál es una medida básica de seguridad de la información?,multiple,Enviar contraseñas por correo,Usar redes públicas sin cifrado,Instalar antivirus actualizado,Instalar antivirus actualizado
+¿Qué elemento NO es parte de la infraestructura tecnológica?,multiple,Routers y switches,Panel de control financiero,Computadoras y servidores,Panel de control financiero
+¿Qué práctica contribuye a la disponibilidad de la información?,multiple,Cifrado de base de datos,Eliminación de respaldos,Hacer respaldos periódicos,Hacer respaldos periódicos
+¿Qué tipo de software protege contra virus  troyanos y malware?,multiple,Firewall,Antivirus,ERP,Antivirus
+¿Cuál es el propósito principal de una política de seguridad de la información?,multiple,Evitar que los empleados usen internet,Mejorar la estética del sistema informático,Establecer reglas claras para proteger la información institucional,Establecer reglas claras para proteger la información institucional

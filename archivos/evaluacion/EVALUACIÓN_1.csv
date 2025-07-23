@@ -1,0 +1,11 @@
+﻿Pregunta,Tipo,Opción1,Opción2,Opción3,Respuesta
+¿Cuál es la primera etapa del proceso electoral en una cooperativa?,multiple,Etapa posterior,Etapa concurrente,Etapa previa,Etapa previa
+¿Qué documento debe leerse el mismo día de la elección de vocales?,multiple,Reglamento interno,Manual de funciones,Acta de la sesión de la asamblea/junta,Acta de la sesión de la asamblea/junta
+¿Qué órgano realiza la elección de los vocales?,multiple,Gerencia general,Asamblea o Junta General,Comité de ética,Asamblea o Junta General
+¿Qué medio puede utilizarse para convocar a una asamblea virtual?,multiple,Solo correo postal,Llamada telefónica,Correos electrónicos o medios institucionales digitales,Correos electrónicos o medios institucionales digitales
+¿Cuál es la función del formulario de registro total o parcial?,multiple,Revisión contable,Formalizar la designación de los vocales ante la SEPS,Realizar encuestas,Formalizar la designación de los vocales ante la SEPS
+La asamblea virtual debe cumplir las mismas condiciones legales que una presencial.,verdadero_falso,,,,VERDADERO
+La lectura del acta se puede realizar hasta 10 días después de la elección.,verdadero_falso,,,,FALSO
+Solo los socios fundadores pueden participar en la elección de vocales.,verdadero_falso,,,,FALSO
+El desarrollo del proceso electoral debe garantizar transparencia  legalidad y participación democrática.,verdadero_falso,,,,VERDADERO
+Las etapas del proceso electoral deben cumplirse en orden cronológico.,verdadero_falso,,,,VERDADERO

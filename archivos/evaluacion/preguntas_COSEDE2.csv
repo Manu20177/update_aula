@@ -1,0 +1,11 @@
+﻿Pregunta,Tipo,Opción1,Opción2,Opción3,Respuesta
+¿Cuál es el objetivo principal del Fondo de Seguro de Depósitos?,multiple,Proteger los ahorros de los depositantes,Garantizar los préstamos interbancarios,Financiar proyectos del gobierno,Proteger los ahorros de los depositantes
+¿Cuál es el monto máximo de cobertura para las cooperativas de segmento 4?,multiple,$1.000,$5.000,$32.000,$1.000
+El Fondo de Seguro de Depósitos es administrado por la Superintendencia de Bancos.,verdadero_falso,##########,FALSO,,FALSO
+Las cooperativas de ahorro y crédito están obligadas a contribuir al Fondo de Seguro de Depósitos.,verdadero_falso,##########,FALSO,,##########
+El FSD garantiza el reembolso de los depósitos en caso de __________ de la institución financiera.,completar,quiebra,cierre,fusión,quiebra
+¿Qué instituciones están cubiertas por el Fondo de Seguro de Depósitos?,multiple,Bancos y cooperativas,Solo bancos,Solo cooperativas,Bancos y cooperativas
+El Fondo de Seguro de Depósitos cubre todos los depósitos sin importar su origen.,verdadero_falso,##########,FALSO,,FALSO
+El límite de cobertura para bancos es de __________ dólares por depositante.,completar,32.000,20.000,50.000,32.000
+¿Qué evento activa la cobertura del Fondo de Seguro de Depósitos?,multiple,El cierre voluntario de una cooperativa,La intervención por parte del organismo de control,La fusión con otra entidad,La intervención por parte del organismo de control
+El seguro de depósitos en Ecuador se activa de forma automática al tener una cuenta en una entidad regulada.,verdadero_falso,##########,FALSO,,##########

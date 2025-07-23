@@ -1,0 +1,11 @@
+﻿Pregunta,Tipo,Opción1,Opción2,Opción3
+¿Cómo calificarías tu experiencia general con el curso?,multiple,Excelente,Buena,Regular
+¿El contenido del curso fue claro y fácil de entender?,multiple,Sí,No,En parte
+¿Consideras que el curso te ayudó a comprender mejor el funcionamiento del seguro de depósitos?,multiple,Mucho,Algo,Nada
+¿La duración del curso fue adecuada?,verdadero_falso,Sí,No,
+¿Recomendarías este curso a otras personas?,verdadero_falso,Sí,No,
+¿Qué aspecto del curso te pareció más útil?,multiple,Contenido práctico,Videos explicativos,Ejercicios evaluativos
+¿Hubo algún momento en el que sentiste que faltaba información relevante?,verdadero_falso,Sí,No,
+¿Cómo te enteraste del curso?,multiple,Página web de COSEDE,Redes sociales,Recomendación personal
+¿Estás satisfecho con el soporte brindado durante el curso?,multiple,Sí,No,En algunas ocasiones
+¿Te gustaría recibir más cursos o capacitaciones por parte de COSEDE?,verdadero_falso,Sí,No,

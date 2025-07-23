@@ -1,0 +1,11 @@
+﻿Pregunta,Tipo,Opción1,Opción2,Opción3
+¿Cómo calificaría la calidad del contenido del curso?,multiple,Excelente,Bueno,Regular
+El curso cumplió con mis expectativas.,verdadero_falso,VERDADERO,FALSO,
+Complete: Me pareció ______ la duración del curso.,completar,adecuada,muy larga,insuficiente
+¿Qué tan claros fueron los facilitadores al explicar el tema?,multiple,Muy claros,Poco claros,Nada claros
+Recomendaría este curso a otros compañeros.,verdadero_falso,VERDADERO,FALSO,
+Complete: Considero que el curso fue ______ para mi trabajo diario.,completar,útil,irrelevante,complementario
+¿Qué aspecto mejoraría del curso?,multiple,Duración,Materiales,Plataforma usada
+La plataforma utilizada fue fácil de manejar.,verdadero_falso,VERDADERO,FALSO,
+Complete: Me gustaría que en futuros cursos se incluya ______.,completar,más ejercicios prácticos,menos teoría,foros de discusión
+¿Cómo califica su nivel de satisfacción general con el curso?,multiple,Alto,Medio,Bajo

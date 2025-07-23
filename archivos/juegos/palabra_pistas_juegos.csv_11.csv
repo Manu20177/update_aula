@@ -1,0 +1,7 @@
+﻿Palabra,Pista
+REGISTRO,Primera acción tras identificar un evento de riesgo operativo.
+MITIGACION,Acciones implementadas para reducir el impacto o probabilidad de ocurrencia del evento.
+SIGRO,Sistema de Gestión específico para riesgos operativos  exigido por la SEPS.
+AUDITORIA,Proceso de revisión que puede detectar eventos no reportados adecuadamente.
+PERSONAS,Factor de riesgo que incluye errores humanos o acciones maliciosas.
+TECNOLOGIA,Riesgo relacionado con fallas de sistemas informáticos o ciberataques.

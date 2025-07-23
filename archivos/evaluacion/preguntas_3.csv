@@ -1,0 +1,11 @@
+﻿Pregunta,Tipo,Opción1,Opción2,Opción3,Respuesta
+¿Cuál es la entidad que regula a las aseguradoras privadas en Ecuador?,multiple,Superintendencia de Bancos,Superintendencia de Compañías,COSEDE,Superintendencia de Compañías
+Las aseguradoras privadas están autorizadas a emitir pólizas de vida.,verdadero_falso,VERDADERO,FALSO,,VERDADERO
+Complete: El contrato entre aseguradora y asegurado se llama ______.,completar,póliza,garantía,obligación,póliza
+¿Cuál de los siguientes seguros es obligatorio por ley en Ecuador?,multiple,Seguro de salud,Seguro de vida,SOAT (vehicular),SOAT (vehicular)
+Las aseguradoras privadas no pueden operar sin autorización legal.,verdadero_falso,VERDADERO,FALSO,,VERDADERO
+Complete: El beneficiario de un seguro de vida es quien ______.,completar,recibe la indemnización,firma el contrato,paga la prima,recibe la indemnización
+¿Qué documento describe las condiciones  coberturas y exclusiones del seguro?,multiple,Factura,Póliza,Certificado de afiliación,Póliza
+El asegurado debe pagar una prima para mantener vigente su póliza.,verdadero_falso,VERDADERO,FALSO,,VERDADERO
+Complete: Una exclusión en un seguro es una ______ de cobertura.,completar,limitación,ampliación,renovación,limitación
+¿Qué tipo de seguro protege al asegurado frente a daños materiales o pérdidas físicas?,multiple,Seguro patrimonial,Seguro de salud,Seguro de vida,Seguro patrimonial

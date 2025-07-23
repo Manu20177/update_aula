@@ -1,0 +1,11 @@
+﻿Pregunta,Tipo,Opción1,Opción2,Opción3,Respuesta
+¿Cuál es el máximo órgano de gobierno en una cooperativa?,multiple,Consejo de administración,Gerencia general,Asamblea General,Asamblea General
+¿Qué principio rige la votación en las asambleas generales?,multiple,Un voto por cada aporte económico,Un voto por persona sin importar el monto de aportación,Voto proporcional a la antigüedad,Un voto por persona sin importar el monto de aportación
+¿Qué documento regula los derechos y obligaciones de los socios?,multiple,Informe de gestión anual,Estatuto social y reglamentos internos,Presupuesto aprobado,Estatuto social y reglamentos internos
+¿Cuál de los siguientes no corresponde a una etapa de la convocatoria a asamblea?,multiple,Etapa previa,Etapa electoral nacional,Etapa concurrente,Etapa electoral nacional
+¿Qué debe considerarse en una asamblea virtual?,multiple,Registro notariado de cada socio,Eliminación del acta final,Especificación del tipo de votación (abierta o secreta),Especificación del tipo de votación (abierta o secreta)
+La Asamblea General está integrada solo por el consejo de administración.,verdadero_falso,,,,FALSO
+Las resoluciones de la Asamblea General son de cumplimiento obligatorio para todos los socios.,verdadero_falso,,,,VERDADERO
+La Asamblea General de Representantes es un tipo de asamblea previsto para ciertos casos.,verdadero_falso,,,,VERDADERO
+En una asamblea presencial  no se requiere quórum para su instalación.,verdadero_falso,,,,FALSO
+Las convocatorias a la asamblea pueden realizarse por medios físicos o virtuales según normativa.,verdadero_falso,,,,VERDADERO

@@ -1,0 +1,11 @@
+﻿Pregunta,Tipo,Opción1,Opción2,Opción3,Respuesta
+La información pública puede ser consultada únicamente por la gerencia de la entidad.,verdadero_falso,,,,FALSO
+Las pérdidas de información pueden causar daño a la imagen institucional.,verdadero_falso,,,,VERDADERO
+Clasificar la información permite definir mejores políticas de seguridad.,verdadero_falso,,,,VERDADERO
+Las copias de respaldo son necesarias únicamente para la información contable.,verdadero_falso,,,,FALSO
+La paralización de actividades es una posible consecuencia ante la pérdida de datos críticos.,verdadero_falso,,,,VERDADERO
+¿Cuál de los siguientes no es un criterio de clasificación de la información?,multiple,Accesibilidad o confidencialidad,Impacto ante pérdida,Costo del respaldo,Costo del respaldo
+¿Qué tipo de información debe considerarse confidencial?,multiple,Promociones públicas,Datos de compras y ventas internas,Horarios de atención al cliente,Datos de compras y ventas internas
+Una mala gestión de respaldos puede generar:,multiple,Publicidad positiva,Reducción de personal,Consecuencias legales,Consecuencias legales
+¿Cuál de las siguientes prácticas es adecuada para la custodia de información?,multiple,Guardar todo en una sola carpeta pública,Utilizar respaldos automáticos y políticas de acceso,Compartir contraseñas entre departamentos,Utilizar respaldos automáticos y políticas de acceso
+¿Qué tipo de información puede ser accedida libremente por cualquier persona?,multiple,Información interna,Información sobre pedidos,Información pública,Información pública
