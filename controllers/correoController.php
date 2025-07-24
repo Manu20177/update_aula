@@ -30,7 +30,7 @@ class correoController extends correoModel {
             $mail->Port       = 465;
 
             // Remitente
-            $mail->setFrom('capacitacionesccf@creditofamiliar.com.ec', $_SESSION['userName'] ?? 'Capacitaciones CCF');
+            $mail->setFrom('capacitacionesccf@creditofamiliar.com.ec', 'Capacitaciones Crédito Familiar' ?? 'Capacitaciones CCF');
 
             // Validar tipo de envío
             if (!isset($_POST['bd_correos']) || empty($_POST['bd_correos'])) {
