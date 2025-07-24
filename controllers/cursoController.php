@@ -229,86 +229,96 @@
         }
 
 	public function pagination_curso_card_controller($Pagina, $Registros, $Busqueda = ""){
-		$Pagina = self::clean_string($Pagina);
-		$Registros = self::clean_string($Registros);
-		$Busqueda = self::clean_string($Busqueda);
+			$Pagina = self::clean_string($Pagina);
+			$Registros = self::clean_string($Registros);
+			$Busqueda = self::clean_string($Busqueda);
 
-		$Pagina = ($Pagina > 0) ? floor($Pagina) : 1;
-		$Inicio = ($Pagina > 0) ? (($Pagina * $Registros) - $Registros) : 0;
+			$Pagina = ($Pagina > 0) ? floor($Pagina) : 1;
+			$Inicio = ($Pagina > 0) ? (($Pagina * $Registros) - $Registros) : 0;
 
-		$CondicionBusqueda = "";
-		if (!empty($Busqueda)) {
-			$CondicionBusqueda = " AND (c.Titulo LIKE '%$Busqueda%' OR c.Fecha LIKE '%$Busqueda%') ";
-		}
-
-		// Consulta principal
-		$Datos = self::execute_single_query("
-			SELECT DISTINCT c.*, tc.norma FROM curso c 
-			LEFT JOIN curso_clase cc ON cc.id_curso = c.id_curso 
-			LEFT JOIN tipo_curso tc ON tc.id_tipoc = c.Norma
-			WHERE 1=1
-			$CondicionBusqueda
-			ORDER BY c.Fecha DESC
-		");
-		$Datos = $Datos->fetchAll();
-		$id_alumno = $_SESSION['userKey'];
-
-		// Conteo total de registros
-		$TotalQuery = "
-			SELECT COUNT(*) as Total FROM curso c 
-			LEFT JOIN curso_clase cc ON cc.id_curso = c.id_curso 
-			WHERE 1=1
-			$CondicionBusqueda
-		";
-		$TotalResult = self::execute_single_query($TotalQuery);
-		$TotalRow = $TotalResult->fetch(PDO::FETCH_ASSOC);
-		$Total = $TotalRow['Total'];
-		$Npaginas = ceil($Total / $Registros);
-
-		// Generar tarjetas
-		$cards = '<div class="row">';
-
-		foreach ($Datos as $rows) {
-			$rutaPortadas = '/attachments/class_portada/';
-			$nombreArchivo = $rows['Portada'];
-			$imagenMostrar = !empty($nombreArchivo) ? $rutaPortadas . $nombreArchivo : $rutaPortadas . 'sin_portada.jpg';
-
-			$idcursodis = $rows["id_curso"];
-			$curso_ins = self::execute_single_query("SELECT * FROM curso_alumno WHERE id_curso='$idcursodis' AND id_alumno='$id_alumno'");
-			$estado = "No Inscrito";
-			$color = "red";
-
-			if ($curso_ins->rowCount() > 0) {
-				$rows1 = $curso_ins->fetch();
-				$estado = $rows1['estado_curso'] == 1 ? "COMPLETADO" : "Inscrito";
-				$color = "green";
+			$CondicionBusqueda = "";
+			if (!empty($Busqueda)) {
+				$CondicionBusqueda = " AND (c.Titulo LIKE '%$Busqueda%' OR c.Fecha LIKE '%$Busqueda%') ";
 			}
 
-			$cards .= '
-			<div class="col-lg-4 col-md-6 col-sm-12 mb-4 d-flex">
-				<form method="POST" action="' . SERVERURL . 'verificarcurso" class="w-100 d-flex">
-					<div class="card shadow-sm card-click d-flex flex-column w-100" style="height: 100%;">
-						<img src="' . $imagenMostrar . '" class="card-img-top" alt="Portada del curso" style="height: 200px; object-fit: cover;">
-						<div class="card-body d-flex flex-column justify-content-between text-center flex-grow-1">
-							<h5 class="card-title" style="min-height: 3em;">Curso: ' . htmlspecialchars($rows["Titulo"]) . '</h5>
-							<p class="card-text"><strong>Fecha:</strong> ' . $rows["Fecha"] . '</p>
-							<p class="card-text"><strong>Norma:</strong> ' . $rows["norma"] . '</p>
-							<span style="color:' . $color . '"><strong>' . $estado . '</strong></span>
+			// Consulta principal
+			$Datos = self::execute_single_query("
+				SELECT DISTINCT c.*,tc.norma FROM curso c 
+				LEFT JOIN curso_clase cc ON cc.id_curso = c.id_curso 
+				LEFT JOIN tipo_curso tc on tc.id_tipoc=c.Norma WHERE 1=1
+				$CondicionBusqueda
+				ORDER BY c.Fecha DESC
+			");
+			$Datos = $Datos->fetchAll();
+			$id_alumno = $_SESSION['userKey'];
+
+			// Conteo total de registros
+			$TotalQuery = "
+				SELECT COUNT(*) as Total FROM curso c 
+				LEFT JOIN curso_clase cc ON cc.id_curso = c.id_curso 
+				WHERE 1=1
+				$CondicionBusqueda
+			";
+			$TotalResult = self::execute_single_query($TotalQuery);
+			$TotalRow = $TotalResult->fetch(PDO::FETCH_ASSOC);
+			$Total = $TotalRow['Total'];
+			$Npaginas = ceil($Total / $Registros);
+
+			// Generar tarjetas
+			$cards = '<div class="row">';
+			$contador = $Inicio + 1;
+
+			foreach ($Datos as $rows) {
+				$rutaPortadas = '/aula/attachments/class_portada/';
+				$nombreArchivo = $rows['Portada'];
+				$imagenMostrar = !empty($nombreArchivo) ? $rutaPortadas . $nombreArchivo : $rutaPortadas . 'sin_portada.jpg';
+
+				$idcursodis = $rows["id_curso"];
+				$curso_ins = self::execute_single_query("SELECT * FROM curso_alumno WHERE id_curso='$idcursodis' AND id_alumno='$id_alumno'");
+				$estado = "No Inscrito";
+				$color = "red";
+
+				if ($curso_ins->rowCount() > 0) {
+					$Datoscuro = $curso_ins->fetchAll();
+					foreach ($Datoscuro as $rows1) {
+						$estado = $rows1['estado_curso'] == 1 ? "COMPLETADO" : "Inscrito";
+					}
+					$color = "green";
+				}
+				// <h5 class="card-title">Curso ' . $contador . ': ' . $rows["Titulo"] . '</h5>
+				// <input type="hidden" name="titulo" value="Curso ' . $contador . ': ' . $rows["Titulo"] . '">
+
+
+
+				$cards .= '
+				<div class="col-md-4 mb-4">
+					<form method="POST" action="' . SERVERURL . 'verificarcurso">
+						<div class="card h-100 shadow-sm cursor-pointer card-click" onclick="this.closest(\'form\').submit();">
+							<div class="card-body">
+								<img src="' . $imagenMostrar . '" class="card-img-top" alt="Portada del curso">
+							</div>
+							<div class="card-footer text-center">
+								<h5 class="card-title">Curso: ' . $rows["Titulo"] . '</h5>
+								<p class="card-text"><strong>Fecha:</strong> ' . $rows["Fecha"] . '</p>
+								<p class="card-text"><strong>Norma:</strong> ' . $rows["norma"] . '</p>
+								<span style="color:' . $color . '">' . $estado . '</span>
+							</div>
+							<input type="hidden" name="portada" value="' . $imagenMostrar . '">
+							<input type="hidden" name="titulo" value="Curso: ' . $rows["Titulo"] . '">
+							<input type="hidden" name="fecha" value="' . $rows["Fecha"] . '">
+							<input type="hidden" name="id_alumno" value="' . $id_alumno . '">
+							<input type="hidden" name="cod" value="' . $idcursodis . '">
 						</div>
-						<input type="hidden" name="portada" value="' . $imagenMostrar . '">
-						<input type="hidden" name="titulo" value="Curso: ' . $rows["Titulo"] . '">
-						<input type="hidden" name="fecha" value="' . $rows["Fecha"] . '">
-						<input type="hidden" name="id_alumno" value="' . $id_alumno . '">
-						<input type="hidden" name="cod" value="' . $idcursodis . '">
-					</div>
-				</form>
-			</div>';
+					</form>
+				</div>';
+
+				$contador++;
+			}
+
+			$cards .= '</div>';
+
+			return $cards;
 		}
-
-		$cards .= '</div>';
-
-		return $cards;
-	}
 
 
 
@@ -742,16 +752,3 @@
 
 	}
 	?>
-	<style>
-		.card-click {
-	cursor: pointer;
-	transition: transform 0.2s;
-}
-.card-click:hover {
-	transform: scale(1.03);
-}
-.card-title {
-	min-height: 3em; /* Asegura que el título no cambie el alto */
-}
-
-	</style>
