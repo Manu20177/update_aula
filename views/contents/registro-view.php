@@ -193,7 +193,7 @@
 
                                <div class="col-xs-12 col-sm-3" style="position: relative;">
                                     <div class="form-group label-floating">
-                                        <label class="control-label">Repira la Contraseña *</label>
+                                        <label class="control-label">Repita la Contraseña *</label>
 
 
                                         <input class="form-control" type="password" name="password2" id="password2" value="<?php if(isset($_POST['password2'])) echo $_POST['password2']; ?>" required maxlength="70">
