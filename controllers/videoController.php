@@ -571,53 +571,67 @@
 
 
 		/*----------  Delete Video Attachment Controller  ----------*/
-		public function delete_video_attachment_controller($code,$name,$urls){
-			$code=self::clean_string($_POST['idAtt']);
-			$name=$_POST['nameAtt'];
+		public function delete_video_attachment_controller($code, $name, $urls){
+			$code = self::clean_string($_POST['idAtt']);
+			$name = $_POST['nameAtt'];
 
-			$AttDir="./attachments/class/";
+			$AttDir = "./attachments/class/";
+			$filePath = $AttDir . $name;
 
-			chmod($AttDir.$name, 0777);
-			if(unlink($AttDir.$name)){
-				$query1=self::execute_single_query("SELECT * FROM clase WHERE id='$code'");
-				$rows=$query1->fetch();
-				$filesA=explode(",", $rows['Adjuntos']);
-				$catt=0;
-				$attFinal="";
-				foreach ($filesA as $AttClass) {
-					if($AttClass!=$name){
-						if($catt<=0){
-							$attFinal.=$AttClass;
-						}else{
-							$attFinal.=",".$AttClass;
+			// Verificar que el nombre no esté vacío y que sea un archivo
+			if (!empty($name) && is_file($filePath)) {
+				chmod($filePath, 0777); // Asegura permisos antes de borrar
+
+				if (unlink($filePath)) {
+					// Obtener registros de la clase
+					$query1 = self::execute_single_query("SELECT * FROM clase WHERE id='$code'");
+					$rows = $query1->fetch();
+					$filesA = explode(",", $rows['Adjuntos']);
+
+					// Reconstruir la lista de adjuntos sin el archivo eliminado
+					$attFinal = "";
+					$catt = 0;
+					foreach ($filesA as $AttClass) {
+						if ($AttClass != $name) {
+							$attFinal .= ($catt > 0 ? "," : "") . $AttClass;
+							$catt++;
 						}
-						$catt++;
 					}
-				}
-				if(self::execute_single_query("UPDATE clase SET Adjuntos='$attFinal' WHERE id='$code'")){
-					$dataAlert=[
-						"title"=>"¡Archivo eliminado!",
-						"text"=>"El archivo adjunto de la clase fue eliminado con éxito",
-						"type"=>"success"
+
+					// Actualizar registro
+					if (self::execute_single_query("UPDATE clase SET Adjuntos='$attFinal' WHERE id='$code'")) {
+						$dataAlert = [
+							"title" => "¡Archivo eliminado!",
+							"text" => "El archivo adjunto de la clase fue eliminado con éxito",
+							"type" => "success"
+						];
+						return self::sweet_alert_url_reload($dataAlert, $urls);
+					} else {
+						$dataAlert = [
+							"title" => "¡Ocurrió un error inesperado!",
+							"text" => "No pudimos actualizar los datos de la clase. Intente nuevamente.",
+							"type" => "error"
+						];
+						return self::sweet_alert_single($dataAlert);
+					}
+				} else {
+					$dataAlert = [
+						"title" => "¡Ocurrió un error inesperado!",
+						"text" => "No pudimos eliminar el archivo. Verifique los permisos o intente nuevamente.",
+						"type" => "error"
 					];
-					return self::sweet_alert_url_reload($dataAlert,$urls);
-				}else{
-					$dataAlert=[
-						"title"=>"¡Ocurrió un error inesperado!",
-						"text"=>"No pudimos eliminar el archivo adjunto de la clase por favor intente nuevamente",
-						"type"=>"error"
-					];
-					return self::sweet_alert_single($dataAlert);	
+					return self::sweet_alert_single($dataAlert);
 				}
-			}else{
-				$dataAlert=[
-					"title"=>"¡Ocurrió un error inesperado!",
-					"text"=>"No pudimos eliminar el archivo adjunto de la clase por favor intente nuevamente",
-					"type"=>"error"
+			} else {
+				$dataAlert = [
+					"title" => "Archivo inválido",
+					"text" => "No se encontró el archivo especificado o el nombre es incorrecto.",
+					"type" => "warning"
 				];
 				return self::sweet_alert_single($dataAlert);
 			}
 		}
+
 
 
 		/*----------  Data Video Controller  ----------*/
