@@ -1,10 +1,9 @@
 <?php 
     require_once "./controllers/cursoController.php";
-
     $insVideo = new cursoController();
-
-    $dateNow=date("Y-m-d");
+    $dateNow = date("Y-m-d");
 ?>
+
 <div class="container-fluid">
     <div class="page-header">
         <h1 class="text-titles"><i class="zmdi zmdi-tv-list zmdi-hc-fw"></i> Cursos</h1>
@@ -14,8 +13,6 @@
     </p>
 </div>
 
-
-
 <div class="container-custom">
     <div class="row">
         <div class="col-xs-12">
@@ -23,12 +20,16 @@
                 <div class="panel-heading">
                     <h3 class="panel-title"><i class="zmdi zmdi-format-list-bulleted"></i> Cursos Disponibles</h3>
                 </div>
-				
+
+                <!-- ✅ Campo de búsqueda separado -->
+                <div class="panel-body">
+                    <div class="form-group">
+                        <input type="text" id="busquedaCurso" class="form-control" placeholder="Buscar curso..." autocomplete="off">
+                    </div>
+                </div>
+
+                <!-- ✅ Resultados aquí -->
                 <div class="panel-body" id="cursoCardsContainer">
-					<!-- Campo de búsqueda -->
-					<div class="form-group">
-						<input type="text" id="busquedaCurso" class="form-control" placeholder="Buscar curso..." autocomplete="off">
-					</div>
                     <?php
                         $page = explode("/", $_GET['views']);
                         echo $insVideo->pagination_curso_card_controller($page[1], 10);
