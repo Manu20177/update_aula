@@ -65,15 +65,16 @@ require_once __DIR__ . '/../core/configGeneral.php';
                         'respuesta_usuario' => $respuesta_usuario
                     ];
                     self::save_respuesta_model($datos_respuesta);
-                    function normalizar_texto($texto) {
-                        // Convertir a minúsculas, quitar espacios y eliminar tildes
-                        $texto = strtolower(trim($texto));
-                        $texto = str_replace(
-                            ['á', 'é', 'í', 'ó', 'ú', 'ñ'],
-                            ['a', 'e', 'i', 'o', 'u', 'n'],
-                            $texto
-                        );
-                        return $texto;
+                    
+                    if (!function_exists('normalizar_texto')) {
+                        function normalizar_texto($texto) {
+                            $texto = strtolower(trim($texto));
+                            $texto = strtr($texto, [
+                                'á'=>'a','é'=>'e','í'=>'i','ó'=>'o','ú'=>'u','ñ'=>'n',
+                                'Á'=>'a','É'=>'e','Í'=>'i','Ó'=>'o','Ú'=>'u','Ñ'=>'n'
+                            ]);
+                            return $texto;
+                        }
                     }
 
                     if (normalizar_texto($respuesta_usuario) === normalizar_texto($respuesta_correcta)) {

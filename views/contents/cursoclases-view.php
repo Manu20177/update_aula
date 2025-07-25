@@ -86,6 +86,7 @@
 
 
 						if ($query->rowCount() > 0) {
+
 							foreach ($query as $key) {
 								# code...
 								$titulo=$key['Titulo'];
@@ -115,24 +116,24 @@
 								$total_encuesta=$total_encuesta+$cant_encuesta;
 
 								$juego_resuelto = $insVideo->check_juego_resuelto_controller($id_alumno, $id_juego);
-								$envaluacion_respondida = $insVideo->check_evaluacion_respondida_controller($id_alumno, $id_juego);
+								$envaluacion_respondida = $insVideo->check_evaluacion_respondida_controller($id_alumno, $id_clase);
 								$encuesta_respondida =  $insVideo->check_encuesta_respondida_controller($id_alumno, $id_clase);
 
-								if ($juego_resuelto) {
-									# code...
-									$resp_juego=$resp_juego+1;
+								$ultima_resuelta_id = ''; // inicializar
 
+								if ($juego_resuelto) {
+									$resp_juego += 1;
+									$ultima_resuelta_id = "actividad-juego-$id_juego";
 								}
 								if ($envaluacion_respondida) {
-									# code...
-									$resp_evaluacion=$resp_evaluacion+1;
-
+									$resp_evaluacion += 1;
+									$ultima_resuelta_id = "actividad-eval-$id_clase";
 								}
 								if ($encuesta_respondida) {
-									# code...
-									$resp_encuesta=$resp_encuesta+1;
-
+									$resp_encuesta += 1;
+									$ultima_resuelta_id = "actividad-encuesta-$id_clase";
 								}
+
 
 
 
@@ -145,33 +146,38 @@
 									<h4 class="text-primary">📘 Clase: <?php echo $titulo ?></h4>
 									<ul class="list-group">
 										<li class="list-group-item d-flex justify-content-between align-items-center">
-											<span class="activity-label">Video de la clase </span>
+											<span class="activity-label">Video de la clase</span>
 											<a href="<?php echo SERVERURL; ?>classview/<?php echo $id_clase; ?>" class="btn btn-link complete-btn" data-id="1">Ver</a>
 										</li>
 										<?php if ($valejuego->rowCount() > 0) { ?>
-											<li class="list-group-item d-flex justify-content-between align-items-center <?php echo ($juego_resuelto ? 'resuelto' : ''); ?>">
-												<span class="activity-label">Juego Interactivo:</span>
-												<a href="<?php echo SERVERURL; ?>juego/<?php echo $id_juego; ?>/<?php echo $tipoj; ?>" class="btn btn-link complete-btn" data-id="4">
-													<?php echo ($juego_resuelto ? '✔ Resuelto' : 'Resolver'); ?>
-												</a>
-											</li>
-										<?php }
-										if ($valevalua->rowCount() > 0) { ?>
-											<li class="list-group-item d-flex justify-content-between align-items-center <?php echo ($envaluacion_respondida ? 'resuelto' : ''); ?>">
-												<span class="activity-label">Evaluación</span>
-												<a href="<?php echo SERVERURL; ?>preguntas/<?php echo $id_clase; ?>" class="btn btn-link complete-btn" data-id="2">
-													<?php echo ($envaluacion_respondida ? '✔ Respondida' : 'Resolver'); ?>
-												</a>
-											</li>
-										<?php }
-										if ($valeencuesta->rowCount() > 0) { ?>
-											<li class="list-group-item d-flex justify-content-between align-items-center <?php echo ($encuesta_respondida ? 'resuelto' : ''); ?>">
-												<span class="activity-label">Encuesta</span>
-												<a href="<?php echo SERVERURL; ?>encuesta/<?php echo $id_clase; ?>" class="btn btn-link complete-btn" data-id="3">
-													<?php echo ($encuesta_respondida ? '✔ Respondida' : 'Responder'); ?>
-												</a>
-											</li>
-										<?php } ?>
+										<li class="list-group-item d-flex justify-content-between align-items-center <?php echo ($juego_resuelto ? 'resuelto' : ''); ?>" 
+											<?php echo ($ultima_resuelta_id === "actividad-juego-$id_juego" ? "id='$ultima_resuelta_id'" : ""); ?>>
+											<span class="activity-label">Juego Interactivo:</span>
+											<a href="<?php echo SERVERURL; ?>juego/<?php echo $id_juego; ?>/<?php echo $tipoj; ?>" class="btn btn-link complete-btn">
+												<?php echo ($juego_resuelto ? '✔ Resuelto' : 'Resolver'); ?>
+											</a>
+										</li>
+									<?php } ?>
+
+									<?php if ($valevalua->rowCount() > 0) { ?>
+										<li class="list-group-item d-flex justify-content-between align-items-center <?php echo ($envaluacion_respondida ? 'resuelto' : ''); ?>" 
+											<?php echo ($ultima_resuelta_id === "actividad-eval-$id_clase" ? "id='$ultima_resuelta_id'" : ""); ?>>
+											<span class="activity-label">Evaluación:</span>
+											<a href="<?php echo SERVERURL; ?>preguntas/<?php echo $id_clase; ?>" class="btn btn-link complete-btn">
+												<?php echo ($envaluacion_respondida ? '✔ Respondida' : 'Resolver'); ?>
+											</a>
+										</li>
+									<?php } ?>
+
+									<?php if ($valeencuesta->rowCount() > 0) { ?>
+										<li class="list-group-item d-flex justify-content-between align-items-center <?php echo ($encuesta_respondida ? 'resuelto' : ''); ?>" 
+											<?php echo ($ultima_resuelta_id === "actividad-encuesta-$id_clase" ? "id='$ultima_resuelta_id'" : ""); ?>>
+											<span class="activity-label">Encuesta:</span>
+											<a href="<?php echo SERVERURL; ?>encuesta/<?php echo $id_clase; ?>" class="btn btn-link complete-btn">
+												<?php echo ($encuesta_respondida ? '✔ Respondida' : 'Responder'); ?>
+											</a>
+										</li>
+									<?php } ?>
 
 									</ul>
 								</div>
@@ -253,3 +259,13 @@
 }
 
 </style>
+
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		const actividades = document.querySelectorAll("li[id^='actividad-']");
+		if (actividades.length > 0) {
+			const ultimaResuelta = actividades[actividades.length - 1];
+			ultimaResuelta.scrollIntoView({ behavior: "smooth", block: "center" });
+		}
+	});
+</script>
