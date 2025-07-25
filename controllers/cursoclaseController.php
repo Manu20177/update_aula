@@ -75,9 +75,9 @@
         }
 
 
-		public function obtenerCantEncuestas($id_juego){
-			$query = self::connect()->prepare("SELECT *  FROM `juego_clase` jc LEFT JOIN juegos j on j.id=jc.id_juego WHERE id_juego=:id_juego AND j.estado!=5 LIMIT 1;");
-			$query->bindParam(":id_juego", $id_juego);
+		public function obtenerCantEncuestas($id_clase){
+			$query = self::connect()->prepare("SELECT *  FROM `encuesta_rapida` WHERE id_clase=:id_clase LIMIT 1;");
+			$query->bindParam(":id_clase", $id_clase);
 			$query->execute();
 			return $query->rowCount();
 		}
