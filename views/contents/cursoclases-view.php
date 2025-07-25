@@ -18,10 +18,15 @@
 	$code      = $datos['cod'];
 	$titulo    = $datos['titulo'];
 	$portada   = $datos['portada'];
+	$portadaurl=SERVERURL.$portada;
 
-	if ($portada="attachments/class_portada/") {
+	if ($portada!="attachments/class_portada/") {
+		# code...
+		$portada=$portada;
+	}else {
 		# code...
 		$portada=SERVERURL."attachments/class_portada/sin_portada.jpg";
+
 	}
 	$id_alumno = $datos['id_alumno'];
 
@@ -62,7 +67,7 @@
 					
 						$query = $insVideo->obtenerclases_controller($id_alumno, $code);
 
-					$total_juegos=0;
+						$total_juegos=0;
 						$total_evaluacion=0;
 						$total_encuesta=0;
 
@@ -76,9 +81,11 @@
 							foreach ($query as $key) {
 								# code...
 								$titulo=$key['Titulo'];
-								$id_clase=$key['id_clase'];
+								$id_clase=$key['id'];
 								$id_juego=$key['id_juego'];
 								$tipoj=$key['tipo'];
+
+								
 								
 
 								$valejuego=$insVideo->execute_single_query("SELECT * FROM juegos WHERE id='$id_juego' and estado!=5");
@@ -130,7 +137,7 @@
 									<h4 class="text-primary">📘 Clase: <?php echo $titulo ?></h4>
 									<ul class="list-group">
 										<li class="list-group-item d-flex justify-content-between align-items-center">
-											<span class="activity-label">Video de la clase</span>
+											<span class="activity-label">Video de la clase </span>
 											<a href="<?php echo SERVERURL; ?>classview/<?php echo $id_clase; ?>" class="btn btn-link complete-btn" data-id="1">Ver</a>
 										</li>
 										<?php if ($valejuego->rowCount() >0) {?>

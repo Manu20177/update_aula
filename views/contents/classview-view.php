@@ -1,4 +1,6 @@
 <?php 
+	error_reporting(E_ALL & ~E_WARNING);
+
 	require_once "./controllers/videoController.php";
 	require_once "./controllers/commentController.php";
 
@@ -13,10 +15,11 @@
 	}
 
 	$code=explode("/", $_GET['views']);
+	$cod=$code[1];
 
-	$data=$insVideo->data_video_controller("Only",$code[1]);
+	$data=$insVideo->data_video_controller("Only",$cod);
 
-	$query=$insVideo->execute_single_query("SELECT c.*, cu.Titulo as tcurso FROM clase c LEFT JOIN curso_clase cc on cc.id_clase=c.id LEFT JOIN curso cu on cu.id_curso=cc.id_curso WHERE cc.id_clase=$code[1]");
+	$query=$insVideo->execute_single_query("SELECT c.*, cu.Titulo as tcurso FROM clase c LEFT JOIN curso_clase cc on cc.id_clase=c.id LEFT JOIN curso cu on cu.id_curso=cc.id_curso WHERE cc.id_clase='$cod'");
 	$cursop="";
 	if ($query->rowCount()>0) {
 		# code...

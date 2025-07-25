@@ -269,7 +269,7 @@
 			$contador = $Inicio + 1;
 
 			foreach ($Datos as $rows) {
-				$rutaPortadas = '/aula/attachments/class_portada/';
+				$rutaPortadas = '../attachments/class_portada/';
 				$nombreArchivo = $rows['Portada'];
 				$imagenMostrar = !empty($nombreArchivo) ? $rutaPortadas . $nombreArchivo : $rutaPortadas . 'sin_portada.jpg';
 

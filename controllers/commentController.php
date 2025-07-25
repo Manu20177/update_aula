@@ -139,6 +139,12 @@
 						}
 					}
 					if($rows['Codigo']==$_SESSION['userKey'] && $rows['Tipo']==$_SESSION['userType']){
+						if ($data1['Nombres']=="") {
+							# code...
+							$nombre="Anonimo";
+						}else{
+							$nombre=$data1['Nombres'];
+						}
 						$table.='
 							<div class="list-group-item">
 								<div class="row-action-primary">
@@ -151,7 +157,7 @@
 									<form action="" id="delete-comment-'.$rows['idc'].'" method="POST" enctype="multipart/form-data">
 										<input type="hidden" name="commentCode" value="'.$rows['idc'].'">
 									</form>
-									<h4 class="list-group-item-heading"><strong>'.$nt.' - '.$data1['Nombres'].' (Yo)</strong></h4>
+									<h4 class="list-group-item-heading"><strong>'.$nt.' - '.$nombre.' (Yo)</strong></h4>
 									<p class="list-group-item-text text-info">
 									'.$rows['Comentario'].'<br>
 						';
@@ -170,13 +176,19 @@
 							<div class="list-group-separator"></div>
 						';
 					}else{
+						if ($data1['Nombres']=="") {
+							# code...
+							$nombre="Administrador";
+						}else{
+							$nombre=$data1['Nombres'];
+						}
 						$table.='
 							<div class="list-group-item">
 								<div class="row-picture">
 									<img class="circle" src="'.SERVERURL.'views/assets/avatars/'.$avatar.'" alt="icon">
 								</div>
 								<div class="row-content">
-									<h4 class="list-group-item-heading">'.$nt.' - '.$data1['Nombres'].'</h4>
+									<h4 class="list-group-item-heading">'.$nt.' - '.$nombre.'</h4>
 									<p class="list-group-item-text">
 									'.$rows['Comentario'].'<br>
 						';
