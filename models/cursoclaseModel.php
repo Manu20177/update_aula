@@ -18,15 +18,14 @@
 			$query->execute();
 			return $query;
 		} /*----------  Verificar si el usuario ya respondió esta clase  ----------*/
-        public function check_respuesta_evaluacion_model($id_usuario, $id_juego) {
+         public function check_respuesta_evaluacion_model($id_usuario, $id_clase) {
             $query = self::connect()->prepare("
-                SELECT COUNT(*) 
-                FROM juego_alumno ja 
-                LEFT JOIN juegos j on j.id=ja.id_juego
-                WHERE id_alumno = :id_usuario AND id_juego = :id_juego AND j.estado!=5
+                  SELECT COUNT(*) 
+                    FROM notas_usuario  
+                    WHERE id_usuario = :id_usuario AND id_clase = :id_clase AND estado=1
             ");
             $query->bindParam(":id_usuario", $id_usuario);
-            $query->bindParam(":id_juego", $id_juego);
+            $query->bindParam(":id_clase", $id_clase);
             $query->execute();
             return $query->fetchColumn() > 0;
         }

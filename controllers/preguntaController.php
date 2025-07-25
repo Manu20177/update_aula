@@ -65,8 +65,18 @@ require_once __DIR__ . '/../core/configGeneral.php';
                         'respuesta_usuario' => $respuesta_usuario
                     ];
                     self::save_respuesta_model($datos_respuesta);
+                    function normalizar_texto($texto) {
+                        // Convertir a minúsculas, quitar espacios y eliminar tildes
+                        $texto = strtolower(trim($texto));
+                        $texto = str_replace(
+                            ['á', 'é', 'í', 'ó', 'ú', 'ñ'],
+                            ['a', 'e', 'i', 'o', 'u', 'n'],
+                            $texto
+                        );
+                        return $texto;
+                    }
 
-                    if (strtolower(trim($respuesta_usuario)) === strtolower(trim($respuesta_correcta))) {
+                    if (normalizar_texto($respuesta_usuario) === normalizar_texto($respuesta_correcta)) {
                         $aciertos++;
                     }
                     if (strtolower(trim($respuesta_correcta)) === "") {
@@ -104,6 +114,8 @@ require_once __DIR__ . '/../core/configGeneral.php';
                         "type" => "success"
 					];
                     
+
+                self::registrar_finalizacion_model($datos_nota);
 
                 echo self::sweet_alert($dataAlert);
 

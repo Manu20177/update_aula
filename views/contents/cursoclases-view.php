@@ -18,7 +18,14 @@
 	$code      = $datos['cod'];
 	$titulo    = $datos['titulo'];
 	$portada   = $datos['portada'];
-	$portadaurl=SERVERURL.$portada;
+
+
+	// Verifica si ya empieza con ../
+	if (strpos($portada, '../') !== 0) {
+		$portada = '../' . $portada;
+	}
+
+
 
 	if ($portada!="attachments/class_portada/") {
 		# code...
@@ -32,6 +39,7 @@
 
 	
 ?>
+
 <p class="text-center">
 	<a href="<?php echo SERVERURL; ?>cursolist/" class="btn btn-info btn-raised btn-sm">
 		<i class="zmdi zmdi-long-arrow-return"></i> Volver
@@ -140,26 +148,31 @@
 											<span class="activity-label">Video de la clase </span>
 											<a href="<?php echo SERVERURL; ?>classview/<?php echo $id_clase; ?>" class="btn btn-link complete-btn" data-id="1">Ver</a>
 										</li>
-										<?php if ($valejuego->rowCount() >0) {?>
-										<li class="list-group-item d-flex justify-content-between align-items-center">
-											<span class="activity-label">Juego Interactivo: </span>
-											<a href="<?php echo SERVERURL; ?>juego/<?php echo $id_juego; ?>/<?php echo $tipoj; ?>" class="btn btn-link complete-btn" data-id="4">Resolver</a>
-										</li>
+										<?php if ($valejuego->rowCount() > 0) { ?>
+											<li class="list-group-item d-flex justify-content-between align-items-center <?php echo ($juego_resuelto ? 'resuelto' : ''); ?>">
+												<span class="activity-label">Juego Interactivo:</span>
+												<a href="<?php echo SERVERURL; ?>juego/<?php echo $id_juego; ?>/<?php echo $tipoj; ?>" class="btn btn-link complete-btn" data-id="4">
+													<?php echo ($juego_resuelto ? '✔ Resuelto' : 'Resolver'); ?>
+												</a>
+											</li>
 										<?php }
-										 if ($valevalua->rowCount() >0) {?>
-										<li class="list-group-item d-flex justify-content-between align-items-center">
-											<span class="activity-label">Evaluación</span>
-											<a href="<?php echo SERVERURL; ?>preguntas/<?php echo $id_clase; ?>" class="btn btn-link complete-btn" data-id="2">Resolver</a>
-										</li>
+										if ($valevalua->rowCount() > 0) { ?>
+											<li class="list-group-item d-flex justify-content-between align-items-center <?php echo ($envaluacion_respondida ? 'resuelto' : ''); ?>">
+												<span class="activity-label">Evaluación</span>
+												<a href="<?php echo SERVERURL; ?>preguntas/<?php echo $id_clase; ?>" class="btn btn-link complete-btn" data-id="2">
+													<?php echo ($envaluacion_respondida ? '✔ Respondida' : 'Resolver'); ?>
+												</a>
+											</li>
 										<?php }
-										if ($valeencuesta->rowCount() >0) {?>
+										if ($valeencuesta->rowCount() > 0) { ?>
+											<li class="list-group-item d-flex justify-content-between align-items-center <?php echo ($encuesta_respondida ? 'resuelto' : ''); ?>">
+												<span class="activity-label">Encuesta</span>
+												<a href="<?php echo SERVERURL; ?>encuesta/<?php echo $id_clase; ?>" class="btn btn-link complete-btn" data-id="3">
+													<?php echo ($encuesta_respondida ? '✔ Respondida' : 'Responder'); ?>
+												</a>
+											</li>
+										<?php } ?>
 
-										
-										<li class="list-group-item d-flex justify-content-between align-items-center">
-											<span class="activity-label">Encuesta</span>
-											<a href="<?php echo SERVERURL; ?>encuesta/<?php echo $id_clase; ?>" class="btn btn-link complete-btn" data-id="3">Responder</a>
-										</li>
-										<?php }?>
 									</ul>
 								</div>
 
@@ -231,3 +244,12 @@
 		</div>
 	</div>
 </fieldset>
+<style>
+	.resuelto {
+    background-color: #d4edda !important; /* verde claro */
+    border-color: #c3e6cb !important;
+    color: #155724 !important;
+    font-weight: bold;
+}
+
+</style>
